@@ -59,4 +59,32 @@ export const LahanGetAllBuilder = (server: Server) => {
       resp.status(500).end('error');
     }
   };
+};
+
+export const LahanGetBydIdBuilder =(server: Server) => {
+  return async (req: Request, resp: Response) => {
+    try {
+      let id = req.params.id
+      let data = await server.repo.getById(id);
+      resp.json(data);
+    } catch (err) {
+      console.log(err);
+      console.log(`Fail to read data`);
+      resp.status(500).end('error');
+    }
+  }
+};
+
+export const LahanDelBuilder = (server: Server) => {
+  return async (req: Request, resp: Response) => {
+    try {
+      let id = req.params.id
+      let data = await server.repo.remove(id);
+      resp.json(data);
+    } catch (err) {
+      console.log(err);
+      console.log(`Fail to delete data`);
+      resp.status(500).end('error');
+    }
+  }
 }

@@ -1,8 +1,9 @@
 import { LahanInsertBuilder, LahanUpdateBuilder,
-  LahanGetAllBuilder } from './lahan';
+  LahanGetAllBuilder, LahanGetBydIdBuilder,
+  LahanDelBuilder } from './lahan';
 import { CompBuilder } from './comp';
 
 export {
   LahanGetAllBuilder, LahanInsertBuilder, LahanUpdateBuilder,
-  CompBuilder
+  CompBuilder,LahanGetBydIdBuilder, LahanDelBuilder
 };

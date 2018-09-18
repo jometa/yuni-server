@@ -82,11 +82,12 @@ export class Repo {
   }
 
   async update (id: string, lahan: Lahan) {
+    delete lahan['_id'];
     return await this.collection.findOneAndUpdate({ _id: new mongodb.ObjectID(id) }, { $set: { ...lahan } });
   }
 
   async remove (id: string) {
-    return await this.collection.remove({ _id: new mongodb.ObjectID(id) });
+    return await this.collection.deleteOne({ _id: new mongodb.ObjectID(id) });
   }
 
   async getByIds (ids: [string]) {
@@ -95,6 +96,12 @@ export class Repo {
         $in: ids.map(id => new mongodb.ObjectID(id))
       }
      }).toArray();
+  }
+
+  async getById (id: string) {
+    console.log(id);
+    let result = await this.collection.findOne({ "_id": new mongodb.ObjectID(id) });
+    return result;
   }
 
   async getAll () {

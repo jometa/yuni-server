@@ -51,9 +51,9 @@ export const LahanUpdateBuilder = (server: Server) => {
 export const LahanGetAllBuilder = (server: Server) => {
   return async (req: Request, resp: Response) => {
     try {
-      let data = await server.repo.getAll();
-      data = data.map(toReadable);
-      resp.json(data);
+      let data: Lahan[] = await server.repo.getAll();
+      let rdata = data.map(l => toReadable(l));
+      resp.json(rdata);
     } catch (err) {
       console.log(`Fail to read data`);
       resp.status(500).end('error');

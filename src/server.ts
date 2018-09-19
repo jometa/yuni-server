@@ -1,11 +1,12 @@
-import { Lahan, Repo, defaultConfig } from './db';
+import { Lahan } from './db';
+import { SqlRepo } from './db-sql';
 import { RouteBuilder } from './routes/base';
 import * as express from 'express';
 import * as bodyParser from 'body-parser';
 
 export class Server {
 
-  constructor(public app: express.Application, public repo: Repo) {
+  constructor(public app: express.Application, public repo: SqlRepo) {
 
   }
 

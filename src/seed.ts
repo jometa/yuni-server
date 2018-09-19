@@ -1,14 +1,14 @@
 import { Server } from './server';
-import { Repo, defaultConfig,
-        SistemPengairan, SumberMataAir,
+import { SistemPengairan, SumberMataAir,
         KemiringanLahan, TeksturTanah, COrganik,
         BahayaBencana } from './db';
+import { SqlRepo, TableLahan } from './db-sql';
 
-const repo: Repo = new Repo(defaultConfig);
+const repo: SqlRepo = new SqlRepo();
 repo.connect()
   .then(async () => {
     // Drop all DATA
-    await repo.collection.deleteMany({});
+    await repo.connection.manager.clear(TableLahan);
 
     // Insert data here...
     await repo.insert({

@@ -120,8 +120,8 @@ export function toReadable(lahan: Lahan) {
 
     kedalamanTanah: lahan.kedalamanTanah
   };
-  if (lahan.hasOwnProperty("_id")) {
-    let _id = (lahan as any)._id;
+  if (lahan.hasOwnProperty("id")) {
+    let _id = (lahan as any).id;
     return {
       ...result,
       _id

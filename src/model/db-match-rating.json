@@ -1,0 +1,10 @@
+{
+  "curahHujan": [0.75, 1.00, 1.00],
+  "sistemPengairan": [0, 0.25, 0.5],
+  "sumberAir": [0.75, 1, 1],
+  "kemiringanLahan": [0.00, 0.25, 0.50],
+  "teksturTanah": [0.5, 0.75, 1.0],
+  "kedalamanTanah": [0.25, 0.5, 0.75],
+  "corganik": [0.5, 0.75, 1.00],
+  "bahayaBencana": [0.25, 0.5, 0.75]
+}

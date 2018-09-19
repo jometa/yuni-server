@@ -1,11 +1,13 @@
-import { Repo, defaultConfig, Lahan } from '../db';
-import { norm_matrix } from './index';
+import { Lahan } from '../db';
+import { SqlRepo } from '../db-sql';
+import { f_saw } from './index';
 
-const repo = new Repo(defaultConfig);
+const repo = new SqlRepo();
 repo.connect()
   .then(async () => {
     let data = await repo.getAll()
-    norm_matrix(data);
+    let result = f_saw(data);
+    console.log(result);
   })
   .catch(err => {
     console.log(err);

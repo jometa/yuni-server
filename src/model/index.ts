@@ -1,5 +1,6 @@
 import { Lahan} from '../db';
 import { fromLahan } from './conversion';
+import { getMatchRating } from './match-rating';
 
 /** 
  * Utilities function
@@ -55,27 +56,28 @@ const constructNorm = (acc: WeightNormStage1, curr: Partial<WeightDesc>) : Weigh
   return acc;
 };
 
-// Construct Weights
-const initial_stage: WeightNormStage1 = {
-  wds: [],
-  total: 0
-};
+function constructNormWeights () {
+  // Construct Weights
+  const initial_stage: WeightNormStage1 = {
+    wds: [],
+    total: 0
+  };
 
-const norm_weights = MATCH_RATINGS
-  .map(constructDeffuzz)
-  .reduce<WeightNormStage1>(constructNorm, initial_stage);
-norm_weights.wds.map(wd => {
-  wd.norm = wd.deffuzz / norm_weights.total;
-});
+  let match_ratings = getMatchRating();
+  let norm_weights = match_ratings
+    .map(constructDeffuzz)
+    .reduce<WeightNormStage1>(constructNorm, initial_stage);
+  norm_weights.wds.map(wd => {
+    wd.norm = wd.deffuzz / norm_weights.total;
+  });
+
+  return norm_weights;
+}
 
 // Dynamic part of model.
 export function norm_matrix(ls: Lahan[]) {
   const names = ls.map(l => l.lokasi);
   const xs = ls.map(fromLahan);
-  // console.log(names);
-  // logMatrix(xs);
-  // console.log('row: ', xs.length);
-  // console.log('column: ', xs[0].length);
 
   // max of each column
   const max_cols = [];
@@ -111,6 +113,7 @@ function pref(xs: number[][], weights: number[]) {
 }
 
 export function f_saw(xs: Lahan[]) {
+  const norm_weights = constructNormWeights();
   const weights = norm_weights.wds.map(wd => wd.norm);
   const mat = norm_matrix(xs);
   const prefs = pref(mat, weights);

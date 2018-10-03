@@ -63,6 +63,18 @@ export class Media {
   lahan: TableLahan;
 }
 
+// @Entity()
+// export class User {
+//   @PrimaryGeneratedColumn()
+//   id: number;
+
+//   @Column()
+//   username: string;
+
+//   @Column()
+//   password: string;
+// }
+
 export const converter = {
   toSql (lahan: Lahan): Partial<TableLahan> {
     return (lahan as TableLahan);

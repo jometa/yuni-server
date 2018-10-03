@@ -68,3 +68,29 @@ export const LoadFilesBuilder = (server: Server) => {
     }
   };
 };
+
+export const SetAvatarBuilder = (server: Server) => {
+  return async (req: Request, resp: Response) => {
+    try {
+      let mid = req.params.mid;
+      await server.repo.setAvatar(mid);
+      resp.end('ok');
+    } catch (err) {
+      console.log(err);
+      resp.status(500).end('error');
+    }
+  };
+};
+
+export const GetAvatarBuilder = (server: Server) => {
+  return async (req: Request, resp: Response) => {
+    try {
+      let lid = req.params.lid;
+      let url = await server.repo.getAvatar(lid);
+      resp.json({ url });
+    } catch (err) {
+      console.log(err);
+      resp.status(500).end('error');
+    }
+  };
+};

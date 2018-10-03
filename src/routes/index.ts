@@ -1,11 +1,17 @@
 import { LahanInsertBuilder, LahanUpdateBuilder,
   LahanGetAllBuilder, LahanGetBydIdBuilder,
   LahanDelBuilder } from './lahan';
-import { CompBuilder } from './comp';
-import { FileUploadBuilder, LoadFilesBuilder } from './file-upload';
+import { CompBuilder, CriteriaRatingBuilder, 
+        CriteriaRatingOptionBuilder,
+        CriteriaRatingWriteBuilder } from './comp';
+import { FileUploadBuilder, LoadFilesBuilder, 
+          SetAvatarBuilder, GetAvatarBuilder } from './file-upload';
 
 export {
   LahanGetAllBuilder, LahanInsertBuilder, LahanUpdateBuilder,
   CompBuilder,LahanGetBydIdBuilder, LahanDelBuilder,
-  FileUploadBuilder, LoadFilesBuilder
+  FileUploadBuilder, LoadFilesBuilder,
+  CriteriaRatingBuilder, CriteriaRatingOptionBuilder,
+  CriteriaRatingWriteBuilder, SetAvatarBuilder,
+  GetAvatarBuilder
 };

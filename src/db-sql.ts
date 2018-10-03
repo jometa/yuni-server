@@ -143,4 +143,23 @@ export class SqlRepo {
       return Object.assign({}, t, { path: url });
     });
   }
+
+  async setAvatar (mid: string | number): Promise<void> {
+    let media = await this.media_repo.findOne(mid);
+    media.avatar = !media.avatar;
+    await this.media_repo.save(media);
+  }
+
+  async getAvatar (lid: string | number): Promise<string> {
+    let photo = await ( this.media_repo.createQueryBuilder('media')
+      .where('media.lahan_id = :lid', { lid })
+      .getOne() );
+
+    if (photo == null || photo == undefined) {
+      return 'https://cdn.vuetifyjs.com/images/cards/house.jpg';
+    }
+    let url = `${config.host}:${config.port}/medias/${photo.path}`;
+    return url;
+  }
+
 }

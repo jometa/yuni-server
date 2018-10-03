@@ -3,7 +3,10 @@ import { SqlRepo } from './db-sql';
 import { LahanInsertBuilder, LahanUpdateBuilder,
         LahanGetAllBuilder, CompBuilder, LahanGetBydIdBuilder,
         LahanDelBuilder, FileUploadBuilder,
-        LoadFilesBuilder } from './routes';
+        LoadFilesBuilder, CriteriaRatingBuilder,
+        CriteriaRatingOptionBuilder,
+        CriteriaRatingWriteBuilder, SetAvatarBuilder,
+        GetAvatarBuilder } from './routes';
 import * as express from 'express';
 import * as bodyParser from 'body-parser';
 import * as cors from 'cors';
@@ -30,6 +33,12 @@ server.delete('/api/lahan/:id', LahanDelBuilder);
 server.post('/comp', CompBuilder);
 server.post('/media', FileUploadBuilder);
 server.get('/lahan/:id/media', LoadFilesBuilder);
+server.get('/criteria_rating', CriteriaRatingBuilder);
+server.post('/criteria_rating', CriteriaRatingWriteBuilder);
+server.get('/criteria_rating_options', CriteriaRatingOptionBuilder);
+server.get('/avatar/:mid', SetAvatarBuilder);
+server.get('/lahan/:lid/avatar', GetAvatarBuilder);
+
 server.start(port)
   .then(server => {
     console.log(`Ok server run at ${port}`);

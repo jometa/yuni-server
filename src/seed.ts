@@ -13,8 +13,8 @@ repo.connect()
     // Insert data here...
     await repo.insert({
       lokasi: 'Tarus',
-      lat: -10.179173, 
-      long: 123.591715,
+      lat: -10.142347, 
+      long: 123.685383,
       curahHujan: 448,
       sistemPengairan: SistemPengairan.IRIGASI_PERMUKAAN,
       sumberAir: SumberMataAir.AGAK_BANYAK,
@@ -26,8 +26,8 @@ repo.connect()
     });
     await repo.insert({
       lokasi: 'Noelbaki',
-      lat: -10.179173, 
-      long: 123.591715,
+      lat: -10.132455, 
+      long: 123.714511,
       curahHujan: 449,
       sistemPengairan: SistemPengairan.IRIGASI_PERMUKAAN,
       sumberAir: SumberMataAir.AGAK_BANYAK,
@@ -39,8 +39,8 @@ repo.connect()
     });
     await repo.insert({
       lokasi: 'Oebelo',
-      lat: -10.179173, 
-      long: 123.591715,
+      lat: -10.118606, 
+      long: 123.752740,
       curahHujan: 453,
       sistemPengairan: SistemPengairan.IRIGASI_PERMUKAAN,
       sumberAir: SumberMataAir.AGAK_BANYAK,
@@ -52,8 +52,8 @@ repo.connect()
     });
     await repo.insert({
       lokasi: 'Manusak',
-      lat: -10.179173, 
-      long: 123.591715,
+      lat: -10.102195, 
+      long: 123.878633,
       curahHujan: 1043,
       sistemPengairan: SistemPengairan.IRIGASI_PERMUKAAN,
       sumberAir: SumberMataAir.BANYAK,
@@ -65,8 +65,8 @@ repo.connect()
     });
     await repo.insert({
       lokasi: 'Oesao',
-      lat: -10.179173, 
-      long: 123.591715,
+      lat: -10.111060, 
+      long: 123.808581,
       curahHujan: 1040,
       sistemPengairan: SistemPengairan.POMPA_AIR,
       sumberAir: SumberMataAir.SANGAT_BANYAK,
@@ -78,8 +78,8 @@ repo.connect()
     });
     await repo.insert({
       lokasi: 'Naibonat',
-      lat: -10.179173, 
-      long: 123.591715,
+      lat: -10.087216, 
+      long: 123.850112,
       curahHujan: 1045,
       sistemPengairan: SistemPengairan.POMPA_AIR,
       sumberAir: SumberMataAir.BANYAK,

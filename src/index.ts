@@ -6,7 +6,7 @@ import { LahanInsertBuilder, LahanUpdateBuilder,
         LoadFilesBuilder, CriteriaRatingBuilder,
         CriteriaRatingOptionBuilder,
         CriteriaRatingWriteBuilder, SetAvatarBuilder,
-        GetAvatarBuilder } from './routes';
+        GetAvatarBuilder, RemoveMediaBuilder } from './routes';
 import * as express from 'express';
 import * as bodyParser from 'body-parser';
 import * as cors from 'cors';
@@ -38,6 +38,7 @@ server.post('/criteria_rating', CriteriaRatingWriteBuilder);
 server.get('/criteria_rating_options', CriteriaRatingOptionBuilder);
 server.get('/avatar/:mid', SetAvatarBuilder);
 server.get('/lahan/:lid/avatar', GetAvatarBuilder);
+server.get('/delete-media/:lid/:mid', RemoveMediaBuilder);
 
 server.start(port)
   .then(server => {

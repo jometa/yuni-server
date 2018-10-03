@@ -136,6 +136,19 @@ export class SqlRepo {
     return await this.media_repo.save(media);
   }
 
+  async removeMedia (lahanId : string | number, mediaId: string | number) {
+    let tlahan: TableLahan = await this.repo.findOne(lahanId, { relations: ['medias'] });
+    tlahan.medias = tlahan.medias.filter(media => {
+      return media.id != lahanId;
+    });
+
+    await this.repo.save(tlahan);
+
+    let media: Media = await this.media_repo.findOne(mediaId);
+    media.lahan = null;
+    await this.media_repo.remove(media);
+  }
+
   async getMedias (id: string | number): Promise<any[]> {
     let tl: TableLahan = await this.repo.findOne(id, { relations: ['medias'] })
     return tl.medias.map(t => {
@@ -152,7 +165,7 @@ export class SqlRepo {
 
   async getAvatar (lid: string | number): Promise<string> {
     let photo = await ( this.media_repo.createQueryBuilder('media')
-      .where('media.lahan_id = :lid', { lid })
+      .where('media.lahan_id = :lid and media.avatar = 1', { lid })
       .getOne() );
 
     if (photo == null || photo == undefined) {

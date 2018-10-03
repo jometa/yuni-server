@@ -5,7 +5,8 @@ import { CompBuilder, CriteriaRatingBuilder,
         CriteriaRatingOptionBuilder,
         CriteriaRatingWriteBuilder } from './comp';
 import { FileUploadBuilder, LoadFilesBuilder, 
-          SetAvatarBuilder, GetAvatarBuilder } from './file-upload';
+          SetAvatarBuilder, GetAvatarBuilder,
+        RemoveMediaBuilder } from './file-upload';
 
 export {
   LahanGetAllBuilder, LahanInsertBuilder, LahanUpdateBuilder,
@@ -13,5 +14,5 @@ export {
   FileUploadBuilder, LoadFilesBuilder,
   CriteriaRatingBuilder, CriteriaRatingOptionBuilder,
   CriteriaRatingWriteBuilder, SetAvatarBuilder,
-  GetAvatarBuilder
+  GetAvatarBuilder, RemoveMediaBuilder
 };

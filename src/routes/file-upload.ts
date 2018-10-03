@@ -94,3 +94,17 @@ export const GetAvatarBuilder = (server: Server) => {
     }
   };
 };
+
+export const RemoveMediaBuilder = (server: Server) => {
+  return async (req: Request, resp: Response) => {
+    try {
+      let lid = req.params.lid;
+      let mid = req.params.mid;
+      await server.repo.removeMedia(lid, mid);
+      resp.end('ok');
+    } catch (err) {
+      console.log(err);
+      resp.status(500).end('error');
+    }
+  };
+};

@@ -38,11 +38,14 @@ export class TableLahan {
   @Column("float")
   kedalamanTanah: number;
 
-  @Column("integer")
+  @Column({ type: "integer" })
   corganik: number;
 
   @Column("integer")
   bahayaBencana: number;
+
+  @Column({ type: "integer", nullable: true })
+  urutan: number;
 
   @OneToMany(type => Media, media => media.lahan)
   medias: Media[];
@@ -114,6 +117,7 @@ export class SqlRepo {
 
   async insert(lahan: Lahan): Promise<any> {
     let l = converter.toSql(lahan);
+    console.log(l);
     return await this.repo.save(l);
   }
 

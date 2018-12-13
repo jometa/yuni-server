@@ -118,7 +118,8 @@ export function toReadable(lahan: Lahan) {
     corganik: _corganik(lahan.corganik),
     bahayaBencana: _bahayaBencana(lahan.bahayaBencana),
 
-    kedalamanTanah: lahan.kedalamanTanah
+    kedalamanTanah: lahan.kedalamanTanah,
+    urutan: lahan.urutan
   };
   if (lahan.hasOwnProperty("id")) {
     let _id = (lahan as any).id;

@@ -69,4 +69,5 @@ export interface Lahan {
   kedalamanTanah: number;
   corganik: COrganik;
   bahayaBencana: BahayaBencana;
+  urutan?: number;
 }
